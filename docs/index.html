@@ -1,0 +1,810 @@
+<!DOCTYPE html>
+<html>
+
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="description"
+          content="">
+    <meta name="keywords" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>SynCamMaster</title>
+  
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-PYVRSFMDRL"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+  
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+  
+      gtag('js', new Date());
+  
+      gtag('config', 'G-PYVRSFMDRL');
+    </script>
+
+<!-- <style>
+    table {
+        border-collapse: collapse;
+        width: 100%;
+    }
+    td, th {
+        border: 1px solid black;
+        padding: 8px;
+    }
+</style> -->
+
+<style>
+    .bordered-table {
+        border-collapse: collapse;
+        width: 100%;
+    }
+    .bordered-table td, .bordered-table th {
+        border: 1px solid black;
+        padding: 8px;
+    }
+</style>
+
+  
+    <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+          rel="stylesheet">
+  
+    <link rel="stylesheet" href="./static/css/bulma.min.css">
+    <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+    <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+    <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+    <link rel="stylesheet" href="./static/css/index.css">
+    <link rel="icon" href="./static/images/dut.svg">
+  
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script defer src="./static/js/fontawesome.all.min.js"></script>
+    <script src="./static/js/bulma-carousel.min.js"></script>
+    <script src="./static/js/bulma-slider.min.js"></script>
+    <script src="./static/js/index.js"></script>
+    <!-- <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script> -->
+    <!-- <script type="text/javascript" id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script> -->
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+  </head>
+
+<body>
+    <nav class="navbar" role="navigation" aria-label="main navigation">
+        <div class="navbar-brand">
+          <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+          </a>
+        </div>
+    </nav>
+    <section class="hero">
+        <div class="hero-body">
+            <div class="container is-max-desktop">
+            <div class="columns is-centered">
+                <div class="column has-text-centered">
+                <h2 class="title is-2 publication-title">
+                    FullRe: Full 4D Reconstruction from Casual Videos
+                  </h2>
+
+                </div>
+                </div>
+            </div>
+            </div>
+        </div>
+    </section>
+    <div id="container"></div>
+
+    <p class="title is-5" style="text-align:center; color: red;">Loading all videos may take some time. Thank you for your patience.</p>
+
+    <section class="hero teaser">
+        <div class="container is-max-desktop">
+            <div class="columns is-centered has-text-centered">
+                <div class="column is-full-width">
+                    <h2 class="title is-3" id="sectionA" style="text-align:left;">Tracking Results</h2>
+                    <!-- <h2 class="title is-3">UniEdit + <a href="https://github.com/Vchitect/LaVie">LaVie</a> (Motion Editing)</h2> -->
+                    <table style="table-layout: fixed;">
+                        <tbody>
+                            <tr>
+                                <!-- First row of videos -->
+                                <td width="40%" style="text-align:center;"> 
+                                    <div style="text-align:center; margin-top: 2px;">
+                                        <p>[ foreground ]</p>
+                                    </div>
+                                    <video width="98%" autoplay muted loop>
+                                        <source src="tracking/camel/dense_foreground_tracks_0_BA_full_stage_3_regular_grid_reso-4_inside-masks-True_radius-1_erosion_kernel_size-3.mp4" type="video/mp4"> 
+                                    </video> 
+                                </td>
+                                <td width="40%" style="text-align:center;"> 
+                                    <div style="text-align:center; margin-top: 2px;">
+                                        <p>[ background ]</p>
+                                    </div>
+                                    <video width="98%" autoplay muted loop>
+                                        <source src="tracking/camel/dense_background_tracks_0_BA_full_stage_3_regular_grid_reso-4_inside-masks-True_radius-1_erosion_kernel_size-3.mp4" type="video/mp4"> 
+                                    </video> 
+                                </td>
+                                <td width="20%" style="text-align:center;"> 
+                                    <div style="text-align:center; margin-top: 2px;">
+                                        <p>[ trails ]</p>
+                                    </div>
+                                    <video width="98%" autoplay muted loop>
+                                        <source src="tracking/camel/dense_trails_0_BA_full_stage_3_regular_grid_reso-4_inside-masks-True_radius-1_erosion_kernel_size-3.mp4" type="video/mp4"> 
+                                    </video> 
+                                </td>
+                            </tr>
+                            
+                            <!-- Add text below the first row -->
+                            <tr>
+                                <td colspan="3" style="text-align:center; margin-top: 10px;">
+                                    camel
+                                </td>
+                            </tr>
+                    
+                            <tr>
+                                <!-- Second row of videos -->
+                                <td width="40%" style="text-align:center;"> 
+                                    <div style="text-align:center; margin-top: 2px;">
+                                        <p>[ foreground ]</p>
+                                    </div>
+                                    <video width="98%" autoplay muted loop>
+                                        <source src="tracking/tennis/dense_foreground_tracks_0_BA_full_stage_3_regular_grid_reso-4_inside-masks-True_radius-1_erosion_kernel_size-7.mp4" type="video/mp4"> 
+                                    </video> 
+                                </td>
+                                <td width="40%" style="text-align:center;"> 
+                                    <div style="text-align:center; margin-top: 2px;">
+                                        <p>[ background ]</p>
+                                    </div>
+                                    <video width="98%" autoplay muted loop>
+                                        <source src="tracking/tennis/dense_background_tracks_0_BA_full_stage_3_regular_grid_reso-4_inside-masks-True_radius-1_erosion_kernel_size-7.mp4" type="video/mp4"> 
+                                    </video> 
+                                </td>
+                                <td width="20%" style="text-align:center;"> 
+                                    <div style="text-align:center; margin-top: 2px;">
+                                        <p>[ trails ]</p>
+                                    </div>
+                                    <video width="98%" autoplay muted loop>
+                                        <source src="tracking/tennis/dense_trails_0_BA_full_stage_3_regular_grid_reso-4_inside-masks-True_radius-1_erosion_kernel_size-7.mp4" type="video/mp4"> 
+                                    </video> 
+                                </td>
+                            </tr>
+
+                            <!-- Add text below the first row -->
+                            <tr>
+                                <td colspan="3" style="text-align:center; margin-top: 10px;">
+                                    tennis
+                                </td>
+                            </tr>
+                    
+                            <tr>
+                                <!-- Second row of videos -->
+                                <td width="40%" style="text-align:center;"> 
+                                    <div style="text-align:center; margin-top: 2px;">
+                                        <p>[ foreground ]</p>
+                                    </div>
+                                    <video width="98%" autoplay muted loop>
+                                        <source src="tracking/bmx-tress/dense_foreground_tracks_0_BA_full_stage_3_regular_grid_reso-4_inside-masks-True_radius-1_erosion_kernel_size-3.mp4" type="video/mp4"> 
+                                    </video> 
+                                </td>
+                                <td width="40%" style="text-align:center;"> 
+                                    <div style="text-align:center; margin-top: 2px;">
+                                        <p>[ background ]</p>
+                                    </div>
+                                    <video width="98%" autoplay muted loop>
+                                        <source src="tracking/bmx-tress/dense_background_tracks_0_BA_full_stage_3_regular_grid_reso-4_inside-masks-True_radius-1_erosion_kernel_size-3.mp4" type="video/mp4"> 
+                                    </video> 
+                                </td>
+                                <td width="20%" style="text-align:center;"> 
+                                    <div style="text-align:center; margin-top: 2px;">
+                                        <p>[ trails ]</p>
+                                    </div>
+                                    <video width="98%" autoplay muted loop>
+                                        <source src="tracking/bmx-tress/dense_trails_0_BA_full_stage_3_regular_grid_reso-4_inside-masks-True_radius-1_erosion_kernel_size-3.mp4" type="video/mp4"> 
+                                    </video> 
+                                </td>
+                            </tr>
+
+                            <!-- Add text below the first row -->
+                            <tr>
+                                <td colspan="3" style="text-align:center; margin-top: 10px;">
+                                    bmx-tress
+                                </td>
+                            </tr>
+
+                                                
+                            <tr>
+                                <!-- Second row of videos -->
+                                <td width="40%" style="text-align:center;"> 
+                                    <div style="text-align:center; margin-top: 2px;">
+                                        <p>[ foreground ]</p>
+                                    </div>
+                                    <video width="98%" autoplay muted loop>
+                                        <source src="tracking/car-roundabout/dense_foreground_tracks_0_BA_full_3(all_pair)loadoptimizer-more-iterations_regular_grid_reso-6_inside-masks-True_radius-1_erosion_kernel_size-19.mp4" type="video/mp4"> 
+                                    </video> 
+                                </td>
+                                <td width="40%" style="text-align:center;"> 
+                                    <div style="text-align:center; margin-top: 2px;">
+                                        <p>[ background ]</p>
+                                    </div>
+                                    <video width="98%" autoplay muted loop>
+                                        <source src="tracking/car-roundabout/dense_background_tracks_0_BA_full_3(all_pair)loadoptimizer-more-iterations_regular_grid_reso-6_inside-masks-True_radius-1_erosion_kernel_size-19.mp4" type="video/mp4"> 
+                                    </video> 
+                                </td>
+                                <td width="20%" style="text-align:center;"> 
+                                    <div style="text-align:center; margin-top: 2px;">
+                                        <p>[ trails ]</p>
+                                    </div>
+                                    <video width="98%" autoplay muted loop>
+                                        <source src="tracking/car-roundabout/dense_trails_0_BA_full_3(all_pair)loadoptimizer-more-iterations_regular_grid_reso-6_inside-masks-True_radius-1_erosion_kernel_size-19.mp4" type="video/mp4"> 
+                                    </video> 
+                                </td>
+                            </tr>
+
+                            <!-- Add text below the first row -->
+                            <tr>
+                                <td colspan="3" style="text-align:center; margin-top: 10px;">
+                                    car-roundabout
+                                </td>
+                            </tr>
+                                                
+                            <tr>
+                                <!-- Second row of videos -->
+                                <td width="40%" style="text-align:center;"> 
+                                    <div style="text-align:center; margin-top: 2px;">
+                                        <p>[ foreground ]</p>
+                                    </div>
+                                    <video width="98%" autoplay muted loop>
+                                        <source src="tracking/cars/dense_foreground_tracks_0_BA_full_stage_3_regular_grid_reso-4_inside-masks-True_radius-1_erosion_kernel_size-3.mp4" type="video/mp4"> 
+                                    </video> 
+                                </td>
+                                <td width="40%" style="text-align:center;"> 
+                                    <div style="text-align:center; margin-top: 2px;">
+                                        <p>[ background ]</p>
+                                    </div>
+                                    <video width="98%" autoplay muted loop>
+                                        <source src="tracking/cars/dense_background_tracks_0_BA_full_stage_3_regular_grid_reso-4_inside-masks-True_radius-1_erosion_kernel_size-3.mp4" type="video/mp4"> 
+                                    </video> 
+                                </td>
+                                <td width="20%" style="text-align:center;"> 
+                                    <div style="text-align:center; margin-top: 2px;">
+                                        <p>[ trails ]</p>
+                                    </div>
+                                    <video width="98%" autoplay muted loop>
+                                        <source src="tracking/cars/dense_trails_0_BA_full_stage_3_regular_grid_reso-4_inside-masks-True_radius-1_erosion_kernel_size-3.mp4" type="video/mp4"> 
+                                    </video> 
+                                </td>
+                            </tr>
+
+                            <!-- Add text below the first row -->
+                            <tr>
+                                <td colspan="3" style="text-align:center; margin-top: 10px;">
+                                    cars
+                                </td>
+                            </tr>
+                                                
+                            <tr>
+                                <!-- Second row of videos -->
+                                <td width="40%" style="text-align:center;"> 
+                                    <div style="text-align:center; margin-top: 2px;">
+                                        <p>[ foreground ]</p>
+                                    </div>
+                                    <video width="98%" autoplay muted loop>
+                                        <source src="tracking/cows/dense_foreground_tracks_0_BA_full_stage_3_regular_grid_reso-4_inside-masks-True_radius-1_erosion_kernel_size-3.mp4" type="video/mp4"> 
+                                    </video> 
+                                </td>
+                                <td width="40%" style="text-align:center;"> 
+                                    <div style="text-align:center; margin-top: 2px;">
+                                        <p>[ background ]</p>
+                                    </div>
+                                    <video width="98%" autoplay muted loop>
+                                        <source src="tracking/cows/dense_background_tracks_0_BA_full_stage_3_regular_grid_reso-4_inside-masks-True_radius-1_erosion_kernel_size-3.mp4" type="video/mp4"> 
+                                    </video> 
+                                </td>
+                                <td width="20%" style="text-align:center;"> 
+                                    <div style="text-align:center; margin-top: 2px;">
+                                        <p>[ trails ]</p>
+                                    </div>
+                                    <video width="98%" autoplay muted loop>
+                                        <source src="tracking/cows/dense_trails_0_BA_full_stage_3_regular_grid_reso-4_inside-masks-True_radius-1_erosion_kernel_size-3.mp4" type="video/mp4"> 
+                                    </video> 
+                                </td>
+                            </tr>
+
+                            <!-- Add text below the first row -->
+                            <tr>
+                                <td colspan="3" style="text-align:center; margin-top: 10px;">
+                                    cows
+                                </td>
+                            </tr>
+                                                
+                            <tr>
+                                <!-- Second row of videos -->
+                                <td width="40%" style="text-align:center;"> 
+                                    <div style="text-align:center; margin-top: 2px;">
+                                        <p>[ foreground ]</p>
+                                    </div>
+                                    <video width="98%" autoplay muted loop>
+                                        <source src="tracking/lucia/dense_foreground_tracks_0_BA_full_stage_3_regular_grid_reso-4_inside-masks-True_radius-1_erosion_kernel_size-3.mp4" type="video/mp4"> 
+                                    </video> 
+                                </td>
+                                <td width="40%" style="text-align:center;"> 
+                                    <div style="text-align:center; margin-top: 2px;">
+                                        <p>[ background ]</p>
+                                    </div>
+                                    <video width="98%" autoplay muted loop>
+                                        <source src="tracking/lucia/dense_background_tracks_0_BA_full_stage_3_regular_grid_reso-4_inside-masks-True_radius-1_erosion_kernel_size-3.mp4" type="video/mp4"> 
+                                    </video> 
+                                </td>
+                                <td width="20%" style="text-align:center;"> 
+                                    <div style="text-align:center; margin-top: 2px;">
+                                        <p>[ trails ]</p>
+                                    </div>
+                                    <video width="98%" autoplay muted loop>
+                                        <source src="tracking/lucia/dense_trails_0_BA_full_stage_3_regular_grid_reso-4_inside-masks-True_radius-1_erosion_kernel_size-3.mp4" type="video/mp4"> 
+                                    </video> 
+                                </td>
+                            </tr>
+
+                            <!-- Add text below the first row -->
+                            <tr>
+                                <td colspan="3" style="text-align:center; margin-top: 10px;">
+                                    lucia
+                                </td>
+                            </tr>
+         
+                            <tr>
+                                <!-- Second row of videos -->
+                                <td width="40%" style="text-align:center;"> 
+                                    <div style="text-align:center; margin-top: 2px;">
+                                        <p>[ foreground ]</p>
+                                    </div>
+                                    <video width="98%" autoplay muted loop>
+                                        <source src="tracking/goat/dense_foreground_tracks_0_BA_full_stage_3_regular_grid_reso-4_inside-masks-True_radius-1_erosion_kernel_size-3.mp4" type="video/mp4"> 
+                                    </video> 
+                                </td>
+                                <td width="40%" style="text-align:center;"> 
+                                    <div style="text-align:center; margin-top: 2px;">
+                                        <p>[ background ]</p>
+                                    </div>
+                                    <video width="98%" autoplay muted loop>
+                                        <source src="tracking/goat/dense_background_tracks_0_BA_full_stage_3_regular_grid_reso-4_inside-masks-True_radius-1_erosion_kernel_size-3.mp4" type="video/mp4"> 
+                                    </video> 
+                                </td>
+                                <td width="20%" style="text-align:center;"> 
+                                    <div style="text-align:center; margin-top: 2px;">
+                                        <p>[ trails ]</p>
+                                    </div>
+                                    <video width="98%" autoplay muted loop>
+                                        <source src="tracking/goat/dense_trails_0_BA_full_stage_3_regular_grid_reso-4_inside-masks-True_radius-1_erosion_kernel_size-3.mp4" type="video/mp4"> 
+                                    </video> 
+                                </td>
+                            </tr>
+
+                            <!-- Add text below the first row -->
+                            <tr>
+                                <td colspan="3" style="text-align:center; margin-top: 10px;">
+                                    goat
+                                </td>
+                            </tr>
+
+                                                
+                            <tr>
+                                <!-- Second row of videos -->
+                                <td width="40%" style="text-align:center;"> 
+                                    <div style="text-align:center; margin-top: 2px;">
+                                        <p>[ foreground ]</p>
+                                    </div>
+                                    <video width="98%" autoplay muted loop>
+                                        <source src="tracking/horsejump-high/dense_foreground_tracks_0_BA_full_stage_2_regular_grid_reso-8_inside-masks-True_radius-1_erosion_kernel_size-3.mp4" type="video/mp4"> 
+                                    </video> 
+                                </td>
+                                <td width="40%" style="text-align:center;"> 
+                                    <div style="text-align:center; margin-top: 2px;">
+                                        <p>[ background ]</p>
+                                    </div>
+                                    <video width="98%" autoplay muted loop>
+                                        <source src="tracking/horsejump-high/dense_background_tracks_0_BA_full_stage_2_regular_grid_reso-8_inside-masks-True_radius-1_erosion_kernel_size-3.mp4" type="video/mp4"> 
+                                    </video> 
+                                </td>
+                                <td width="20%" style="text-align:center;"> 
+                                    <div style="text-align:center; margin-top: 2px;">
+                                        <p>[ trails ]</p>
+                                    </div>
+                                    <video width="98%" autoplay muted loop>
+                                        <source src="tracking/horsejump-high/dense_trails_0_BA_full_stage_2_regular_grid_reso-8_inside-masks-True_radius-1_erosion_kernel_size-3.mp4" type="video/mp4"> 
+                                    </video> 
+                                </td>
+                            </tr>
+
+                            <!-- Add text below the first row -->
+                            <tr>
+                                <td colspan="3" style="text-align:center; margin-top: 10px;">
+                                    horsejump-high
+                                </td>
+                            </tr>
+
+                                                
+                            <tr>
+                                <!-- Second row of videos -->
+                                <td width="40%" style="text-align:center;"> 
+                                    <div style="text-align:center; margin-top: 2px;">
+                                        <p>[ foreground ]</p>
+                                    </div>
+                                    <video width="98%" autoplay muted loop>
+                                        <source src="tracking/labcoat/dense_foreground_tracks_0_BA_full_stage_3_regular_grid_reso-4_inside-masks-True_radius-1_erosion_kernel_size-3.mp4" type="video/mp4"> 
+                                    </video> 
+                                </td>
+                                <td width="40%" style="text-align:center;"> 
+                                    <div style="text-align:center; margin-top: 2px;">
+                                        <p>[ background ]</p>
+                                    </div>
+                                    <video width="98%" autoplay muted loop>
+                                        <source src="tracking/labcoat/dense_background_tracks_0_BA_full_stage_3_regular_grid_reso-4_inside-masks-True_radius-1_erosion_kernel_size-3.mp4" type="video/mp4"> 
+                                    </video> 
+                                </td>
+                                <td width="20%" style="text-align:center;"> 
+                                    <div style="text-align:center; margin-top: 2px;">
+                                        <p>[ trails ]</p>
+                                    </div>
+                                    <video width="98%" autoplay muted loop>
+                                        <source src="tracking/labcoat/dense_trails_0_BA_full_stage_3_regular_grid_reso-4_inside-masks-True_radius-1_erosion_kernel_size-3.mp4" type="video/mp4"> 
+                                    </video> 
+                                </td>
+                            </tr>
+
+                            <!-- Add text below the first row -->
+                            <tr>
+                                <td colspan="3" style="text-align:center; margin-top: 10px;">
+                                    labcoat
+                                </td>
+                            </tr>
+                                                
+                            <tr>
+                                <!-- Second row of videos -->
+                                <td width="40%" style="text-align:center;"> 
+                                    <div style="text-align:center; margin-top: 2px;">
+                                        <p>[ foreground ]</p>
+                                    </div>
+                                    <video width="98%" autoplay muted loop>
+                                        <source src="tracking/mallard-water/dense_foreground_tracks_0_BA_full_stage_3_regular_grid_reso-4_inside-masks-True_radius-1_erosion_kernel_size-3.mp4" type="video/mp4"> 
+                                    </video> 
+                                </td>
+                                <td width="40%" style="text-align:center;"> 
+                                    <div style="text-align:center; margin-top: 2px;">
+                                        <p>[ background ]</p>
+                                    </div>
+                                    <video width="98%" autoplay muted loop>
+                                        <source src="tracking/mallard-water/dense_background_tracks_0_BA_full_stage_3_regular_grid_reso-4_inside-masks-True_radius-1_erosion_kernel_size-3.mp4" type="video/mp4"> 
+                                    </video> 
+                                </td>
+                                <td width="20%" style="text-align:center;"> 
+                                    <div style="text-align:center; margin-top: 2px;">
+                                        <p>[ trails ]</p>
+                                    </div>
+                                    <video width="98%" autoplay muted loop>
+                                        <source src="tracking/mallard-water/dense_trails_0_BA_full_stage_3_regular_grid_reso-4_inside-masks-True_radius-1_erosion_kernel_size-3.mp4" type="video/mp4"> 
+                                    </video> 
+                                </td>
+                            </tr>
+
+                            <!-- Add text below the first row -->
+                            <tr>
+                                <td colspan="3" style="text-align:center; margin-top: 10px;">
+                                    mallard-water
+                                </td>
+                            </tr>
+
+                                                
+                            <tr>
+                                <!-- Second row of videos -->
+                                <td width="40%" style="text-align:center;"> 
+                                    <div style="text-align:center; margin-top: 2px;">
+                                        <p>[ foreground ]</p>
+                                    </div>
+                                    <video width="98%" autoplay muted loop>
+                                        <source src="tracking/motorbike/dense_foreground_tracks_0_BA_full_stage_2_regular_grid_reso-4_inside-masks-True_radius-1_erosion_kernel_size-3.mp4" type="video/mp4"> 
+                                    </video> 
+                                </td>
+                                <td width="40%" style="text-align:center;"> 
+                                    <div style="text-align:center; margin-top: 2px;">
+                                        <p>[ background ]</p>
+                                    </div>
+                                    <video width="98%" autoplay muted loop>
+                                        <source src="tracking/motorbike/dense_background_tracks_0_BA_full_stage_2_regular_grid_reso-4_inside-masks-True_radius-1_erosion_kernel_size-3.mp4" type="video/mp4"> 
+                                    </video> 
+                                </td>
+                                <td width="20%" style="text-align:center;"> 
+                                    <div style="text-align:center; margin-top: 2px;">
+                                        <p>[ trails ]</p>
+                                    </div>
+                                    <video width="98%" autoplay muted loop>
+                                        <source src="tracking/motorbike/dense_trails_0_BA_full_stage_2_regular_grid_reso-4_inside-masks-True_radius-1_erosion_kernel_size-3.mp4" type="video/mp4"> 
+                                    </video> 
+                                </td>
+                            </tr>
+
+                            <!-- Add text below the first row -->
+                            <tr>
+                                <td colspan="3" style="text-align:center; margin-top: 10px;">
+                                    motorbike
+                                </td>
+                            </tr>
+
+                        </tbody>
+                    </table>
+                <br>
+                <div class="column is-full-width">
+                    <h2 class="title is-3" id="sectionA" style="text-align:left;">Depth Map</h2>
+                    <!-- <h2 class="title is-3">UniEdit + <a href="https://github.com/Vchitect/LaVie">LaVie</a> (Motion Editing)</h2> -->
+                    <table style="table-layout: fixed;">
+                        <tbody>
+                            <tr>
+                                <!-- First row of videos -->
+                                <td width="33%" style="text-align:center;"> 
+                                    <div style="text-align:center; margin-top: 2px;">
+                                        <p>[ input video ]</p>
+                                    </div>
+                                    <img width="50%" src="depth_map/horsejump-low/horsejump-low.gif">
+                                </td>
+                                <td width="33%" style="text-align:center;"> 
+                                    <div style="text-align:center; margin-top: 2px;">
+                                        <p>[ before optim ]</p>
+                                    </div>
+                                    <img width="50%" src="depth_map/horsejump-low/init_disp.gif">
+                                </td>
+                                <td width="33%" style="text-align:center;"> 
+                                    <div style="text-align:center; margin-top: 2px;">
+                                        <p>[ after optim ]</p>
+                                    </div>
+                                    <img width="50%" src="depth_map/horsejump-low/disp.gif">
+                                </td>
+                            </tr>
+                            <!-- Add text below the first row -->
+                            <tr>
+                                <td colspan="3" style="text-align:center; margin-top: 10px;">
+                                    horsejump-low
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <!-- First row of videos -->
+                                <td width="33%" style="text-align:center;"> 
+                                    <div style="text-align:center; margin-top: 2px;">
+                                        <p>[ input video ]</p>
+                                    </div>
+                                    <img width="50%" src="depth_map/horsejump_high/horsejump_high.gif">
+                                </td>
+                                <td width="33%" style="text-align:center;"> 
+                                    <div style="text-align:center; margin-top: 2px;">
+                                        <p>[ before optim ]</p>
+                                    </div>
+                                    <img width="50%" src="depth_map/horsejump_high/init_disp.gif">
+                                </td>
+                                <td width="33%" style="text-align:center;"> 
+                                    <div style="text-align:center; margin-top: 2px;">
+                                        <p>[ after optim ]</p>
+                                    </div>
+                                    <img width="50%" src="depth_map/horsejump_high/disp.gif">
+                                </td>
+                            </tr>
+                            <!-- Add text below the first row -->
+                            <tr>
+                                <td colspan="3" style="text-align:center; margin-top: 10px;">
+                                    horsejump_high
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <!-- First row of videos -->
+                                <td width="33%" style="text-align:center;"> 
+                                    <div style="text-align:center; margin-top: 2px;">
+                                        <p>[ input video ]</p>
+                                    </div>
+                                    <img width="50%" src="depth_map/lab-coat/lab-coat.gif">
+                                </td>
+                                <td width="33%" style="text-align:center;"> 
+                                    <div style="text-align:center; margin-top: 2px;">
+                                        <p>[ before optim ]</p>
+                                    </div>
+                                    <img width="50%" src="depth_map/lab-coat/init_disp.gif">
+                                </td>
+                                <td width="33%" style="text-align:center;"> 
+                                    <div style="text-align:center; margin-top: 2px;">
+                                        <p>[ after optim ]</p>
+                                    </div>
+                                    <img width="50%" src="depth_map/lab-coat/disp.gif">
+                                </td>
+                            </tr>
+                            <!-- Add text below the first row -->
+                            <tr>
+                                <td colspan="3" style="text-align:center; margin-top: 10px;">
+                                    lab-coat
+                                </td>
+                            </tr>
+
+
+                            <tr>
+                                <!-- First row of videos -->
+                                <td width="33%" style="text-align:center;"> 
+                                    <div style="text-align:center; margin-top: 2px;">
+                                        <p>[ input video ]</p>
+                                    </div>
+                                    <img width="50%" src="depth_map/tennis/tennis.gif">
+                                </td>
+                                <td width="33%" style="text-align:center;"> 
+                                    <div style="text-align:center; margin-top: 2px;">
+                                        <p>[ before optim ]</p>
+                                    </div>
+                                    <img width="50%" src="depth_map/tennis/init_disp.gif">
+                                </td>
+                                <td width="33%" style="text-align:center;"> 
+                                    <div style="text-align:center; margin-top: 2px;">
+                                        <p>[ after optim ]</p>
+                                    </div>
+                                    <img width="50%" src="depth_map/tennis/disp.gif">
+                                </td>
+                            </tr>
+                            <!-- Add text below the first row -->
+                            <tr>
+                                <td colspan="3" style="text-align:center; margin-top: 10px;">
+                                    tennis
+                                </td>
+                            </tr>
+
+
+                            <tr>
+                                <!-- First row of videos -->
+                                <td width="33%" style="text-align:center;"> 
+                                    <div style="text-align:center; margin-top: 2px;">
+                                        <p>[ input video ]</p>
+                                    </div>
+                                    <img width="50%" src="depth_map/train/train.gif">
+                                </td>
+                                <td width="33%" style="text-align:center;"> 
+                                    <div style="text-align:center; margin-top: 2px;">
+                                        <p>[ before optim ]</p>
+                                    </div>
+                                    <img width="50%" src="depth_map/train/init_disp.gif">
+                                </td>
+                                <td width="33%" style="text-align:center;"> 
+                                    <div style="text-align:center; margin-top: 2px;">
+                                        <p>[ after optim ]</p>
+                                    </div>
+                                    <img width="50%" src="depth_map/train/disp.gif">
+                                </td>
+                            </tr>
+                            <!-- Add text below the first row -->
+                            <tr>
+                                <td colspan="3" style="text-align:center; margin-top: 10px;">
+                                    train
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <!-- First row of videos -->
+                                <td width="33%" style="text-align:center;"> 
+                                    <div style="text-align:center; margin-top: 2px;">
+                                        <p>[ input video ]</p>
+                                    </div>
+                                    <img width="50%" src="depth_map/hockey/hockey.gif">
+                                </td>
+                                <td width="33%" style="text-align:center;"> 
+                                    <div style="text-align:center; margin-top: 2px;">
+                                        <p>[ before optim ]</p>
+                                    </div>
+                                    <img width="50%" src="depth_map/hockey/init_disp.gif">
+                                </td>
+                                <td width="33%" style="text-align:center;"> 
+                                    <div style="text-align:center; margin-top: 2px;">
+                                        <p>[ after optim ]</p>
+                                    </div>
+                                    <img width="50%" src="depth_map/hockey/disp.gif">
+                                </td>
+                            </tr>
+                            <!-- Add text below the first row -->
+                            <tr>
+                                <td colspan="3" style="text-align:center; margin-top: 10px;">
+                                    hockey
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <!-- First row of videos -->
+                                <td width="33%" style="text-align:center;"> 
+                                    <div style="text-align:center; margin-top: 2px;">
+                                        <p>[ input video ]</p>
+                                    </div>
+                                    <img width="50%" src="depth_map/dog/dog.gif">
+                                </td>
+                                <td width="33%" style="text-align:center;"> 
+                                    <div style="text-align:center; margin-top: 2px;">
+                                        <p>[ before optim ]</p>
+                                    </div>
+                                    <img width="50%" src="depth_map/dog/init_disp.gif">
+                                </td>
+                                <td width="33%" style="text-align:center;"> 
+                                    <div style="text-align:center; margin-top: 2px;">
+                                        <p>[ after optim ]</p>
+                                    </div>
+                                    <img width="50%" src="depth_map/dog/disp.gif">
+                                </td>
+                            </tr>
+                            <!-- Add text below the first row -->
+                            <tr>
+                                <td colspan="3" style="text-align:center; margin-top: 10px;">
+                                    dog
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <!-- First row of videos -->
+                                <td width="33%" style="text-align:center;"> 
+                                    <div style="text-align:center; margin-top: 2px;">
+                                        <p>[ input video ]</p>
+                                    </div>
+                                    <img width="50%" src="depth_map/car-roundabout/car-roundabout.gif">
+                                </td>
+                                <td width="33%" style="text-align:center;"> 
+                                    <div style="text-align:center; margin-top: 2px;">
+                                        <p>[ before optim ]</p>
+                                    </div>
+                                    <img width="50%" src="depth_map/car-roundabout/init_disp.gif">
+                                </td>
+                                <td width="33%" style="text-align:center;"> 
+                                    <div style="text-align:center; margin-top: 2px;">
+                                        <p>[ after optim ]</p>
+                                    </div>
+                                    <img width="50%" src="depth_map/car-roundabout/disp.gif">
+                                </td>
+                            </tr>
+                            <!-- Add text below the first row -->
+                            <tr>
+                                <td colspan="3" style="text-align:center; margin-top: 10px;">
+                                    car-roundabout
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <!-- First row of videos -->
+                                <td width="33%" style="text-align:center;"> 
+                                    <div style="text-align:center; margin-top: 2px;">
+                                        <p>[ input video ]</p>
+                                    </div>
+                                    <img width="50%" src="depth_map/camel/camel.gif">
+                                </td>
+                                <td width="33%" style="text-align:center;"> 
+                                    <div style="text-align:center; margin-top: 2px;">
+                                        <p>[ before optim ]</p>
+                                    </div>
+                                    <img width="50%" src="depth_map/camel/init_disp.gif">
+                                </td>
+                                <td width="33%" style="text-align:center;"> 
+                                    <div style="text-align:center; margin-top: 2px;">
+                                        <p>[ after optim ]</p>
+                                    </div>
+                                    <img width="50%" src="depth_map/camel/disp.gif">
+                                </td>
+                            </tr>
+                            <!-- Add text below the first row -->
+                            <tr>
+                                <td colspan="3" style="text-align:center; margin-top: 10px;">
+                                    camel
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                <br>
+                <hr style="margin-top:0px">
+            </div>
+        </div>
+        </div>
+
+    </section>
+
+
+</body>
+
+</html>
